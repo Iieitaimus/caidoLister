@@ -1,6 +1,6 @@
 # CaidoLister
 
-CaidoLister is a tool designed to generate lists of hosts, paths, and parameters from Caido CSV export files.
+CaidoLister is a tool designed to generate wordlists of hosts, paths, and parameters from Caido CSV export files.
 
 ## Usage Example
 
