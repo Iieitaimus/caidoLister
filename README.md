@@ -4,7 +4,7 @@ CaidoLister is a tool designed to generate lists of hosts, paths, and parameters
 
 ## Usage Example
 
-Suppose you have a CSV export file from Caido containing various data. You can use CaidoLister to extract hosts, paths, and parameters from this file.
+Suppose you have a CSV export file from [Caido](https://docs.caido.io/reference/features/logging/exports.html). You can use CaidoLister to extract hosts, paths, and parameters from this file.
 
 ```
 caidoLister -f caido_export.csv
