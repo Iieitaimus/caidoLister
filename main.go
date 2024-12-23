@@ -14,6 +14,7 @@ type data struct {
 	hosts  []string
 	paths  []string
 	params []string
+	URLs   []string
 }
 
 func main() {
@@ -40,6 +41,7 @@ func main() {
 		return
 	}
 
+	writeArrayToFile("urls-js.txt", data.URLs)
 	writeArrayToFile("hosts.txt", data.hosts)
 	writeArrayToFile("paths.txt", data.paths)
 	writeArrayToFile("params.txt", data.params)
@@ -108,13 +110,15 @@ func readCsv(fileName string) *data {
 		hosts:  []string{},
 		paths:  []string{},
 		params: []string{},
+		URLs:   []string{},
 	}
-
+	uniqueURLs := make(map[string]bool)
 	uniqueHosts := make(map[string]bool)
 	uniquePaths := make(map[string]bool)
 	uniqueParams := make(map[string]bool)
 
 	for _, record := range records[1:] {
+		URL := "https://" + record[hostIndex] + record[pathIndex]
 		host := processHost(record[hostIndex])
 		path := record[pathIndex]
 		param := record[queryIndex]
@@ -130,6 +134,9 @@ func readCsv(fileName string) *data {
 			for _, paramName := range paramNames {
 				appendUnique(&data.params, paramName, &uniqueParams)
 			}
+		}
+		if URL != "" {
+			appendUnique(&data.URLs, URL, &uniqueURLs)
 		}
 	}
 	return data
